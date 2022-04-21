@@ -1,5 +1,6 @@
 import './App.css';
 import { useState } from 'react';
+import html2canvas from 'html2canvas';
 //Las imagenes de publicidad en facebook por lo general son de 500 * 500 px
 function App() {
 
@@ -18,6 +19,19 @@ function App() {
 
   const onChangeImagen = function (evento) {
     setImagen(evento.target.value)
+  }
+  const onClickExportar = function (evento) {
+    html2canvas(document.querySelector("#meme")).then(canvas => {
+      
+
+      var link = document.createElement('a');
+      link.download = 'meme.png';
+      link.href = canvas.toDataURL("image/png")
+      link.click();
+
+    });
+
+    
   }
 
 
@@ -44,9 +58,9 @@ function App() {
 
       {/*//Boton para descargar el meme*/}
 
-      <button>Exportar</button>
+      <button onClick={onClickExportar}>Exportar</button>
 
-      <div className="meme">
+      <div className="meme" id='meme'>
         <span>{linea1}</span> <br />
         <span>{linea2}</span>
         <img src={"/imageneMemes/" +imagen+".jpg"}/>

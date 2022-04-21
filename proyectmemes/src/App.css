@@ -50,3 +50,12 @@
 .meme span:nth-child(3){
   margin-top: 330px;
 }
+
+.meme{
+
+  margin-top: 5px;
+  padding-top: 1px;
+  border-top: 1px;
+  background: black;
+
+}
